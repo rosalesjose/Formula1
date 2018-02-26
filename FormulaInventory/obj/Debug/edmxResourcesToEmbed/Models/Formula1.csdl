@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Formula1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Engine">
+    <Key>
+      <PropertyRef Name="EngineID" />
+    </Key>
+    <Property Name="EngineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Litres" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+    <Property Name="Revolutions" Type="Int32" Nullable="false" />
+    <Property Name="Pistons" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wheel">
+    <Key>
+      <PropertyRef Name="WheelID" />
+    </Key>
+    <Property Name="WheelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RimSize" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Formula1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Engines" EntityType="Self.Engine" />
+    <EntitySet Name="Wheels" EntityType="Self.Wheel" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Formula1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Engines">
+          <Key>
+            <PropertyRef Name="EngineID" />
+          </Key>
+          <Property Name="EngineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Litres" Type="numeric" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="Revolutions" Type="int" Nullable="false" />
+          <Property Name="Pistons" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wheels">
+          <Key>
+            <PropertyRef Name="WheelID" />
+          </Key>
+          <Property Name="WheelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RimSize" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Color" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Material" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Formula1ModelStoreContainer">
+          <EntitySet Name="Engines" EntityType="Self.Engines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wheels" EntityType="Self.Wheels" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Formula1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="EngineID" />
+          </Key>
+          <Property Name="EngineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Litres" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="Revolutions" Type="Int32" Nullable="false" />
+          <Property Name="Pistons" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wheel">
+          <Key>
+            <PropertyRef Name="WheelID" />
+          </Key>
+          <Property Name="WheelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RimSize" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Formula1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Engines" EntityType="Self.Engine" />
+          <EntitySet Name="Wheels" EntityType="Self.Wheel" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Formula1ModelStoreContainer" CdmEntityContainer="Formula1Entities">
+          <EntitySetMapping Name="Engines">
+            <EntityTypeMapping TypeName="Formula1Model.Engine">
+              <MappingFragment StoreEntitySet="Engines">
+                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="Litres" ColumnName="Litres" />
+                <ScalarProperty Name="Revolutions" ColumnName="Revolutions" />
+                <ScalarProperty Name="Pistons" ColumnName="Pistons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wheels">
+            <EntityTypeMapping TypeName="Formula1Model.Wheel">
+              <MappingFragment StoreEntitySet="Wheels">
+                <ScalarProperty Name="WheelID" ColumnName="WheelID" />
+                <ScalarProperty Name="RimSize" ColumnName="RimSize" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

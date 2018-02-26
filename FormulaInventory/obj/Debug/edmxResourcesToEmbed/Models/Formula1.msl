@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Formula1ModelStoreContainer" CdmEntityContainer="Formula1Entities">
+    <EntitySetMapping Name="Engines">
+      <EntityTypeMapping TypeName="Formula1Model.Engine">
+        <MappingFragment StoreEntitySet="Engines">
+          <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+          <ScalarProperty Name="Litres" ColumnName="Litres" />
+          <ScalarProperty Name="Revolutions" ColumnName="Revolutions" />
+          <ScalarProperty Name="Pistons" ColumnName="Pistons" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wheels">
+      <EntityTypeMapping TypeName="Formula1Model.Wheel">
+        <MappingFragment StoreEntitySet="Wheels">
+          <ScalarProperty Name="WheelID" ColumnName="WheelID" />
+          <ScalarProperty Name="RimSize" ColumnName="RimSize" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

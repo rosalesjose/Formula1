@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Formula1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Engines">
+    <Key>
+      <PropertyRef Name="EngineID" />
+    </Key>
+    <Property Name="EngineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Litres" Type="numeric" Precision="4" Scale="1" Nullable="false" />
+    <Property Name="Revolutions" Type="int" Nullable="false" />
+    <Property Name="Pistons" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wheels">
+    <Key>
+      <PropertyRef Name="WheelID" />
+    </Key>
+    <Property Name="WheelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RimSize" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Color" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Material" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Formula1ModelStoreContainer">
+    <EntitySet Name="Engines" EntityType="Self.Engines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wheels" EntityType="Self.Wheels" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
