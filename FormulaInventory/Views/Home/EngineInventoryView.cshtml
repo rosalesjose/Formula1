@@ -1,0 +1,21 @@
+﻿<br /><br />
+
+<table class="table">
+    <tr style="font-weight:bold">
+        <td>Engine ID</td>
+        <td>Litres</td>
+        <td>Revolutions</td>
+        <td>Pistons</td>
+        <td>Price</td>
+    </tr>
+    @foreach (var T in ViewBag.EngineList)
+    {
+        <tr>
+            <td>@T.EngineID</td>
+            <td>@T.Litres</td>
+            <td>@T.Revolutions</td>
+            <td>@T.Pistons</td>
+            <td>$ @T.Price</td>
+        </tr>
+    }
+</table>

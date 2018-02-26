@@ -18,5 +18,6 @@ namespace FormulaInventory.Models
         public decimal Litres { get; set; }
         public int Revolutions { get; set; }
         public int Pistons { get; set; }
+        public decimal Price { get; set; }
     }
 }

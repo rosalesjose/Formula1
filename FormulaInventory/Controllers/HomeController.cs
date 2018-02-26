@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FormulaInventory.Models;
 
 namespace FormulaInventory.Controllers
 {
@@ -27,12 +28,12 @@ namespace FormulaInventory.Controllers
             return View();
         }
 
-        public ActionResult AddNewEngine()
-        { 
+        public ActionResult EngineView()
+        {
             return View("AddEngineView");
         }
 
-        public ActionResult AddNewWheel()
+        public ActionResult WheelView()
         {
             return View("AddWheelView");
         }
@@ -41,5 +42,54 @@ namespace FormulaInventory.Controllers
         {
             return View("AddToInventory");
         }
+
+        public ActionResult AddNewEngine(Engine newEngine, int EngineID, float Price)
+        {
+            Formula1Entities FOrm = new Formula1Entities();
+            FOrm.Engines.Add(newEngine);
+            FOrm.SaveChanges();
+
+            ViewBag.EngineID = EngineID;
+            ViewBag.ECost = Price;
+
+            return View("EngineReview");
+        }
+
+        public ActionResult AddNewWheel(Wheel newWheel, int WheelID, float Price)
+        {
+            Formula1Entities FOrm = new Formula1Entities();
+            FOrm.Wheels.Add(newWheel);
+            FOrm.SaveChanges();
+
+            ViewBag.WheelID = WheelID;
+            ViewBag.WCost = Price;
+
+            return View("WheelReview");
+        }
+
+        public ActionResult InventoryView()
+        {
+
+            return View("InventoryView");
+        }
+
+        public ActionResult EngineInventory()
+        {
+            Formula1Entities FOrm = new Formula1Entities();
+
+            ViewBag.EngineList = FOrm.Engines.ToList();
+
+            return View("EngineInventoryView");
+        }
+
+        public ActionResult WheelInventory()
+        {
+            Formula1Entities FOrm = new Formula1Entities();
+
+            ViewBag.WheelList = FOrm.Wheels.ToList();
+
+            return View("WheelInventoryView");
+        }
+
     }
 }

@@ -8,6 +8,7 @@
     <Property Name="Litres" Type="numeric" Precision="4" Scale="1" Nullable="false" />
     <Property Name="Revolutions" Type="int" Nullable="false" />
     <Property Name="Pistons" Type="int" Nullable="false" />
+    <Property Name="Price" Type="numeric" Precision="8" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="Wheels">
     <Key>
@@ -17,6 +18,7 @@
     <Property Name="RimSize" Type="numeric" Precision="4" Scale="2" Nullable="false" />
     <Property Name="Color" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="Material" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="numeric" Precision="5" Scale="2" Nullable="false" />
   </EntityType>
   <EntityContainer Name="Formula1ModelStoreContainer">
     <EntitySet Name="Engines" EntityType="Self.Engines" Schema="dbo" store:Type="Tables" />

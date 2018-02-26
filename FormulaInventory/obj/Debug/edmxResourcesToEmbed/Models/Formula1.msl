@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Engines">
       <EntityTypeMapping TypeName="Formula1Model.Engine">
         <MappingFragment StoreEntitySet="Engines">
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="EngineID" ColumnName="EngineID" />
           <ScalarProperty Name="Litres" ColumnName="Litres" />
           <ScalarProperty Name="Revolutions" ColumnName="Revolutions" />
@@ -14,6 +15,7 @@
     <EntitySetMapping Name="Wheels">
       <EntityTypeMapping TypeName="Formula1Model.Wheel">
         <MappingFragment StoreEntitySet="Wheels">
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="WheelID" ColumnName="WheelID" />
           <ScalarProperty Name="RimSize" ColumnName="RimSize" />
           <ScalarProperty Name="Color" ColumnName="Color" />

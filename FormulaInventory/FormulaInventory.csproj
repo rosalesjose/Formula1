@@ -234,6 +234,11 @@
     <Content Include="Views\Home\AddEngineView.cshtml" />
     <Content Include="Views\Home\AddWheelView.cshtml" />
     <Content Include="Views\Home\AddToInventory.cshtml" />
+    <Content Include="Views\Home\EngineReview.cshtml" />
+    <Content Include="Views\Home\WheelReview.cshtml" />
+    <Content Include="Views\Home\InventoryView.cshtml" />
+    <Content Include="Views\Home\EngineInventoryView.cshtml" />
+    <Content Include="Views\Home\WheelInventoryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

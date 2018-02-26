@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Formula1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Formula1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Engines">
           <Key>
             <PropertyRef Name="EngineID" />
@@ -13,6 +13,7 @@
           <Property Name="Litres" Type="numeric" Precision="4" Scale="1" Nullable="false" />
           <Property Name="Revolutions" Type="int" Nullable="false" />
           <Property Name="Pistons" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="8" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Wheels">
           <Key>
@@ -22,13 +23,13 @@
           <Property Name="RimSize" Type="numeric" Precision="4" Scale="2" Nullable="false" />
           <Property Name="Color" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Material" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="5" Scale="2" Nullable="false" />
         </EntityType>
         <EntityContainer Name="Formula1ModelStoreContainer">
           <EntitySet Name="Engines" EntityType="Self.Engines" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wheels" EntityType="Self.Wheels" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Formula1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,6 +41,7 @@
           <Property Name="Litres" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
           <Property Name="Revolutions" Type="Int32" Nullable="false" />
           <Property Name="Pistons" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
         </EntityType>
         <EntityType Name="Wheel">
           <Key>
@@ -49,6 +51,7 @@
           <Property Name="RimSize" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="Color" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
         </EntityType>
         <EntityContainer Name="Formula1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Engines" EntityType="Self.Engine" />
@@ -63,6 +66,7 @@
           <EntitySetMapping Name="Engines">
             <EntityTypeMapping TypeName="Formula1Model.Engine">
               <MappingFragment StoreEntitySet="Engines">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="EngineID" ColumnName="EngineID" />
                 <ScalarProperty Name="Litres" ColumnName="Litres" />
                 <ScalarProperty Name="Revolutions" ColumnName="Revolutions" />
@@ -73,6 +77,7 @@
           <EntitySetMapping Name="Wheels">
             <EntityTypeMapping TypeName="Formula1Model.Wheel">
               <MappingFragment StoreEntitySet="Wheels">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="WheelID" ColumnName="WheelID" />
                 <ScalarProperty Name="RimSize" ColumnName="RimSize" />
                 <ScalarProperty Name="Color" ColumnName="Color" />

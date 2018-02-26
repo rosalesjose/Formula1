@@ -1,0 +1,21 @@
+﻿<br /><br />
+
+<table class="table">
+    <tr style="font-weight:bold">
+        <td>Wheel ID</td>
+        <td>Rim Size</td>
+        <td>Color</td>
+        <td>Material</td>
+        <td>Price</td>
+    </tr>
+    @foreach (var T in ViewBag.WheelList)
+    {
+        <tr>
+            <td>@T.WheelID</td>
+            <td>@T.RimSize</td>
+            <td>@T.Color</td>
+            <td>@T.Material</td>
+            <td>$ @T.Price</td>
+        </tr>
+    }
+</table>

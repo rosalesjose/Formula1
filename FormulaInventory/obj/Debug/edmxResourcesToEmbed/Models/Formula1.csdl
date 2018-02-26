@@ -8,6 +8,7 @@
     <Property Name="Litres" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
     <Property Name="Revolutions" Type="Int32" Nullable="false" />
     <Property Name="Pistons" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
   </EntityType>
   <EntityType Name="Wheel">
     <Key>
@@ -17,6 +18,7 @@
     <Property Name="RimSize" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
   </EntityType>
   <EntityContainer Name="Formula1Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Engines" EntityType="Self.Engine" />
