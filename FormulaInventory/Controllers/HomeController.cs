@@ -176,5 +176,37 @@ namespace FormulaInventory.Controllers
             //go to customer view (refresh customer data)
             return RedirectToAction("WheelInventory");
         }
+
+        public ActionResult DeleteEngineById(int EngineID)
+        {
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //2. find what you're looking for THEN remove from list
+            //if record has dependencis then delete that first!
+            FOrm.Engines.Remove((FOrm.Engines.Find(EngineID)));
+
+            //save changes
+            FOrm.SaveChanges();
+
+            //show new refreshed database
+            return RedirectToAction("EngineInventory");
+        }
+
+        public ActionResult DeleteWheelById(int WheelID)
+        {
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //2. find what you're looking for THEN remove from list
+            //if record has dependencis then delete that first!
+            FOrm.Wheels.Remove((FOrm.Wheels.Find(WheelID)));
+
+            //save changes
+            FOrm.SaveChanges();
+
+            //show new refreshed database
+            return RedirectToAction("WheelInventory");
+        }
     }
 }
