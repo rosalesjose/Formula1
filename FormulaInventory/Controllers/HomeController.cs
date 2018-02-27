@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FormulaInventory.Models;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace FormulaInventory.Controllers
 {
     public class HomeController : Controller
     {
+        #region BaseViews
         public ActionResult Index()
         {
             return View();
@@ -27,7 +31,9 @@ namespace FormulaInventory.Controllers
 
             return View();
         }
+        #endregion
 
+        #region AddInventory
         public ActionResult EngineView()
         {
             return View("AddEngineView");
@@ -66,7 +72,9 @@ namespace FormulaInventory.Controllers
 
             return View("WheelReview");
         }
+        #endregion
 
+        #region ViewInventory
         public ActionResult InventoryView()
         {
 
@@ -90,7 +98,9 @@ namespace FormulaInventory.Controllers
 
             return View("WheelInventoryView");
         }
+        #endregion
 
+        #region UpdateDeleteSave
         public ActionResult UpdateEngineById(int EngineID)
         {
             //1. orm
@@ -207,6 +217,49 @@ namespace FormulaInventory.Controllers
 
             //show new refreshed database
             return RedirectToAction("WheelInventory");
+        }
+        #endregion
+
+        #region F1 API
+
+        public ActionResult ShowConstructors()
+        {
+            return View("CarConstructors");
+        }
+
+        public ActionResult ShowInfoForRace(string season)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp("http://ergast.com/api/f1/" + season + ".json");
+
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+
+            //request headers
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+
+                string output = rd.ReadToEnd(); //read all the response back
+
+                //parsing data
+                JObject JParser = JObject.Parse(output);
+
+                //ViewBag.RawData = JParser["name"]; //single piece of info
+
+                ViewBag.Season = JParser["MRData"]["RaceTable"]["season"];
+
+                ViewBag.RInfo = JParser["MRData"]["RaceTable"]["Races"];
+
+                return View("SeasonView");
+            }
+            else
+            {
+                return View("../Shared/Error");
+            }
+
+            #endregion
         }
     }
 }

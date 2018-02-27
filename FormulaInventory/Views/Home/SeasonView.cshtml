@@ -1,0 +1,9 @@
+﻿<h1>Season</h1>
+<h2>@ViewBag.Season</h2><br />
+
+<h3>Races</h3>
+
+@foreach (var R in ViewBag.RInfo)
+{
+    <h4>@R["raceName"]</h4>    
+}
