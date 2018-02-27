@@ -239,6 +239,8 @@
     <Content Include="Views\Home\InventoryView.cshtml" />
     <Content Include="Views\Home\EngineInventoryView.cshtml" />
     <Content Include="Views\Home\WheelInventoryView.cshtml" />
+    <Content Include="Views\Home\UpdateEngineView.cshtml" />
+    <Content Include="Views\Home\UpdateWheelView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

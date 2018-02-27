@@ -1,0 +1,11 @@
+﻿@model FormulaInventory.Models.Engine
+
+<form action="/Home/SaveEngineChanges" method="get">
+    Engine ID: <input type="text" name="EngineID" disabled value="@ViewBag.EngineToBeUpdated.EngineID" /><br /><br />
+    <input type="hidden" name="EngineID" value="@ViewBag.EngineToBeUpdated.EngineID" />
+    Litres: <input type="text" name="Litres" value="@ViewBag.EngineToBeUpdated.Litres" /><br /><br />
+    Revolutions: <input type="text" name="Revolutions" value="@ViewBag.EngineToBeUpdated.Revolutions" /><br /><br />
+    Pistons: <input type="text" name="Pistons" value="@ViewBag.EngineToBeUpdated.Pistons" /><br /><br />
+    Price: <input type="text" name="Price" value="@ViewBag.EngineToBeUpdated.Price" /><br /><br />
+    <input type="submit" value="Save Changes" />
+</form>

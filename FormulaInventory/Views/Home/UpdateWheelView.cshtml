@@ -1,0 +1,12 @@
+﻿@model FormulaInventory.Models.Wheel
+
+<form action="/Home/SaveWheelChanges" method="get">
+    Wheel ID: <input type="text" name="WheelID" disabled value="@ViewBag.WheelToBeUpdated.WheelID" /><br /><br />
+    <input type="hidden" name="WheelID" value="@ViewBag.WheelToBeUpdated.WheelID" />
+    Rim Size: <input type="text" name="RimSize" value="@ViewBag.WheelToBeUpdated.RimSize" /><br /><br />
+    Color: <input type="text" name="Color" value="@ViewBag.WheelToBeUpdated.Color" /><br /><br />
+    Material: <input type="text" name="Material" value="@ViewBag.WheelToBeUpdated.Material" /><br /><br />
+    Price: <input type="text" name="Price" value="@ViewBag.WheelToBeUpdated.Price" /><br /><br />
+    <input type="submit" value="Save Changes" />
+</form>
+

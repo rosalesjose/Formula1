@@ -91,5 +91,90 @@ namespace FormulaInventory.Controllers
             return View("WheelInventoryView");
         }
 
+        public ActionResult UpdateEngineById(int EngineID)
+        {
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //find
+            Engine ToBeUpdated = FOrm.Engines.Find(EngineID);
+
+            ViewBag.EngineToBeUpdated = ToBeUpdated;
+
+            return View("UpdateEngineView");
+        }
+
+        public ActionResult SaveEngineChanges(Engine UpdatedEngine)
+        {
+            //0. validation
+            if (!ModelState.IsValid)
+            {
+
+
+                //over errors for each field in mobdel
+                foreach (ModelState S in ModelState.Values)
+                {
+                    //individual errors for each fields
+                }
+
+                //Request.UserHostAddress
+                return View("../Shared/Error"); //error page
+            }
+
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //find
+            FOrm.Entry(FOrm.Engines.Find(UpdatedEngine.EngineID)).CurrentValues.SetValues(UpdatedEngine);
+
+            //save
+            FOrm.SaveChanges();
+
+            //go to customer view (refresh customer data)
+            return RedirectToAction("EngineInventory");
+        }
+
+        public ActionResult UpdateWheelById(int WheelID)
+        {
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //find
+            Wheel ToBeUpdated = FOrm.Wheels.Find(WheelID);
+
+            ViewBag.WheelToBeUpdated = ToBeUpdated;
+
+            return View("UpdateWheelView");
+        }
+
+        public ActionResult SaveWheelChanges(Wheel UpdatedWheel)
+        {
+            //0. validation
+            if (!ModelState.IsValid)
+            {
+
+
+                //over errors for each field in mobdel
+                foreach (ModelState S in ModelState.Values)
+                {
+                    //individual errors for each fields
+                }
+
+                //Request.UserHostAddress
+                return View("../Shared/Error"); //error page
+            }
+
+            //1. orm
+            Formula1Entities FOrm = new Formula1Entities();
+
+            //find
+            FOrm.Entry(FOrm.Wheels.Find(UpdatedWheel.WheelID)).CurrentValues.SetValues(UpdatedWheel);
+
+            //save
+            FOrm.SaveChanges();
+
+            //go to customer view (refresh customer data)
+            return RedirectToAction("WheelInventory");
+        }
     }
 }
