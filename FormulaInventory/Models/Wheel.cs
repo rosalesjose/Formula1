@@ -11,13 +11,19 @@ namespace FormulaInventory.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Wheel
     {
+        [Required]
         public int WheelID { get; set; }
+        [Required]
         public decimal RimSize { get; set; }
+        [Required]
         public string Color { get; set; }
+        [Required]
         public string Material { get; set; }
+        [Required]
         public decimal Price { get; set; }
     }
 }

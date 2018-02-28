@@ -20,7 +20,7 @@
                 <a href="/Home/UpdateWheelById?WheelID=@T.WheelID">Update</a>
             </td>
             <td>
-                <a href="/Home/DeleteWheelById?WheelID=@T.WheelID">Delete</a>
+                <a href="/Home/DeleteWheelById?WheelID=@T.WheelID" onclick="return confirm('Are you sure?')">Delete</a>
             </td>
         </tr>
     }

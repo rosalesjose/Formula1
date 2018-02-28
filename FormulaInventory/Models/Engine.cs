@@ -11,13 +11,20 @@ namespace FormulaInventory.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.DynamicData;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Engine
     {
+        [Required]
         public int EngineID { get; set; }
+        [Required]
         public decimal Litres { get; set; }
+        [Required]
         public int Revolutions { get; set; }
+        [Required]
         public int Pistons { get; set; }
+        [Required]
         public decimal Price { get; set; }
     }
 }

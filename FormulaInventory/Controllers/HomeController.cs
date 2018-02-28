@@ -229,37 +229,47 @@ namespace FormulaInventory.Controllers
 
         public ActionResult ShowInfoForRace(string season)
         {
-            HttpWebRequest request = WebRequest.CreateHttp("http://ergast.com/api/f1/" + season + ".json");
-
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
-
-            //request headers
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
+            try
             {
-                StreamReader rd = new StreamReader(response.GetResponseStream());
+                HttpWebRequest request = WebRequest.CreateHttp("http://ergast.com/api/f1/" + season + ".json");
 
-                string output = rd.ReadToEnd(); //read all the response back
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
 
-                //parsing data
-                JObject JParser = JObject.Parse(output);
+                //request headers
 
-                //ViewBag.RawData = JParser["name"]; //single piece of info
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                ViewBag.Season = JParser["MRData"]["RaceTable"]["season"];
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader rd = new StreamReader(response.GetResponseStream());
 
-                ViewBag.RInfo = JParser["MRData"]["RaceTable"]["Races"];
+                    string output = rd.ReadToEnd(); //read all the response back
 
-                return View("SeasonView");
+                    //parsing data
+                    JObject JParser = JObject.Parse(output);
+
+                    //ViewBag.RawData = JParser["name"]; //single piece of info
+
+                    ViewBag.Season = JParser["MRData"]["RaceTable"]["season"];
+
+                    ViewBag.RInfo = JParser["MRData"]["RaceTable"]["Races"];
+
+                    return View("SeasonView");
+                }
+                else
+                {
+                    return View("../Shared/Error");
+                }
             }
-            else
+            catch (Exception)
             {
+
                 return View("../Shared/Error");
             }
 
-            #endregion
+
         }
+        #endregion
+
     }
 }

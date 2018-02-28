@@ -1,9 +1,43 @@
 ﻿<h1>Season</h1>
 <h2>@ViewBag.Season</h2><br />
 
-<h3>Races</h3>
+<table class="table">
+    <tr style="font-weight:bold">
+        <td>Race Date</td>
+        <td>Race Name</td>
+        <td>Track Name</td>
+        <td>Country</td>
+    </tr>
+    <tr>
+        <td>
+            @foreach (var R in ViewBag.RInfo)
+            {
+                <p>@R["date"]</p>
+            }
+        </td>
 
-@foreach (var R in ViewBag.RInfo)
-{
-    <h4>@R["raceName"]</h4>    
-}
+        <td>
+            @foreach (var R in ViewBag.RInfo)
+            {
+                <p>@R["raceName"]</p>
+            }
+        </td>
+
+         <td>
+            @foreach (var R in ViewBag.RInfo)
+            {
+                <p>@R["Circuit"]["circuitName"]</p>
+            }
+        </td>
+
+        <td>
+            @foreach (var R in ViewBag.RInfo)
+            {
+                <p>@R["Circuit"]["Location"]["country"]</p>
+            }
+        </td>
+    </tr>
+</table>
+
+
+
