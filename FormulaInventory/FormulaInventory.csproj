@@ -184,6 +184,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\1515413469674.jpg" />
+    <Content Include="Img\F1-engines-cover-MAIN.jpg" />
     <Content Include="Models\Formula1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Formula1.Context.cs</LastGenOutput>

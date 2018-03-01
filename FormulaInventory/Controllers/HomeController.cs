@@ -49,6 +49,7 @@ namespace FormulaInventory.Controllers
             return View("AddToInventory");
         }
 
+        //[HttpPost]
         public ActionResult AddNewEngine(Engine newEngine, int EngineID, float Price)
         {
             Formula1Entities FOrm = new Formula1Entities();
@@ -72,6 +73,63 @@ namespace FormulaInventory.Controllers
 
             return View("WheelReview");
         }
+
+        //[HttpPost]
+        //public ActionResult AddImage(File upload, HttpPostedFileBase file)
+        //{
+        //    if (file.ContentLength > 0)
+        //    {
+        //        var fileName = Path.GetFileName(file.FileName);
+        //        var path = Path.Combine(Server.MapPath("C:/Users/Skeletor/source/repos/FormulaInventory/FormulaInventory/Img"), fileName);
+        //        file.SaveAs(path);
+
+        //        return View();
+        //    }
+
+        //    //[HttpPost]
+        //    //public ActionResult AddImage(Engine model, HttpPostedFileBase image1)
+        //    //{
+        //    //    var db = new Formula1Entities();
+
+        //    //    if (image1 != null)
+        //    //    {
+        //    //        model. = new byte[image1.ContentLength];
+        //    //    }
+
+
+
+        //    //}
+
+        //    //[HttpPost]
+        //    //public ActionResult Index(Engine model, HttpPostedFileBase file)
+        //    //{
+        //    //    Formula1Entities FOrm = new Formula1Entities();
+        //    //    var allowedExtensions = new[] {
+        //    //    ".Jpg", ".png", ".jpg", "jpeg"
+        //    //};
+        //    //    FOrm.Id = model["Id"].ToString();
+        //    //    FOrm.Image_url = file.ToString(); //getting complete url  
+        //    //    FOrm.Name = fc["Name"].ToString();
+        //    //    var fileName = Path.GetFileName(file.FileName); //getting only file name(ex-ganesh.jpg)  
+        //    //    var ext = Path.GetExtension(file.FileName); //getting the extension(ex-.jpg)  
+        //    //    if (allowedExtensions.Contains(ext)) //check what type of extension  
+        //    //    {
+        //    //        string name = Path.GetFileNameWithoutExtension(fileName); //getting file name without extension  
+        //    //        string myfile = name + "_" + FOrm.Id + ext; //appending the name with id  
+        //    //                                                    // store the file inside ~/project folder(Img)  
+        //    //        var path = Path.Combine(Server.MapPath("~/Img"), myfile);
+        //    //        FOrm.Image_url = path;
+        //    //        obj.tbl_details.Add(FOrm);
+        //    //        obj.SaveChanges();
+        //    //        file.SaveAs(path);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        ViewBag.message = "Please choose only Image file";
+        //    //    }
+        //    //    return View();
+        //    //}
+        //}
         #endregion
 
         #region ViewInventory
@@ -266,8 +324,6 @@ namespace FormulaInventory.Controllers
 
                 return View("../Shared/Error");
             }
-
-
         }
         #endregion
 

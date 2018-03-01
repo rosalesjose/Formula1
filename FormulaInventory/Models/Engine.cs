@@ -11,7 +11,6 @@ namespace FormulaInventory.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.DynamicData;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Engine
@@ -26,5 +25,7 @@ namespace FormulaInventory.Models
         public int Pistons { get; set; }
         [Required]
         public decimal Price { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
     }
 }

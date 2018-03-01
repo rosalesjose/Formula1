@@ -6,4 +6,64 @@
     @*maybe change to int year if doesnt work with text year*@
     <input type="number" name="season" required pattern="^(19|20)\d{2}$"/><br />
     <input type="submit" action="/Home/ShowInfoForRace?season=1" value="Search" />
-</form>
+</form><br /><br /><br />
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps Multiple Markers</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIlnLgGmjjuZgJOac7DRstvO94hN7vAJc&callback=initMap"
+            type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 1000px; height: 400px;"></div>
+
+    <script type="text/javascript">
+        var locations = [
+            ['Albert Park Grand Prix Circuit', -37.850039, 144.969011, 4],
+            ['Shanghai International Circuit', 26.031600, 121.221638, 5],
+            ['Bahrain International Circuit', -34.028249, 50.512900, 3],
+            ['Sochi Autodrom', 43.409985, 39.969026, 2],
+            ['Circuit de Barcelona-Catalunya', 41.568229, 2.257133, 1],
+            ['Circuit de Monaco', 43.7355227, 7.4199952, 1],
+            ['Circuit Gilles Villeneuve', 45.503219, -73.526688, 1],
+            ['Baku City Circuit', 40.370837, 49.843497, 1],
+            ['Red Bull Ring', 47.220244, 14.764848, 1],
+            ['Silverstone Circuit', 52.073301, -1.014663, 1],
+            ['Hungaroring', 47.581711, 19.250611, 1],
+            ['Circuit de Spa-Francorchamps', 50.436912, 5.972050, 1],
+            ['Autodromo Nazionale di Monza', 45.621799, 9.284800, 1],
+            ['Marina Bay Street Circuit', 1.291432, 103.863910, 1],
+            ['Sepang International Circuit', 2.759414, 101.731778, 1],
+            ['Suzuka Circuit', 34.845593, 136.538952, 1],
+            ['Circuit of the Americas', 30.134581, -97.635851, 1],
+            ['Autódromo Hermanos Rodríguez', 19.403937, -99.089529, 1],
+            ['Autódromo José Carlos Pace', -23.701185, -46.697954, 1],
+            ['Yas Marina Circuit', 24.469941, 54.605507, 1]
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(-33.92, 151.25),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    </script>
+</body>

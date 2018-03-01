@@ -9,6 +9,7 @@
     <Property Name="Revolutions" Type="Int32" Nullable="false" />
     <Property Name="Pistons" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Wheel">
     <Key>

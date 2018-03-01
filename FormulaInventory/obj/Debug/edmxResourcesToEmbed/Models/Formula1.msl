@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Engines">
       <EntityTypeMapping TypeName="Formula1Model.Engine">
         <MappingFragment StoreEntitySet="Engines">
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="EngineID" ColumnName="EngineID" />
           <ScalarProperty Name="Litres" ColumnName="Litres" />
