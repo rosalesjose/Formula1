@@ -1,50 +1,60 @@
 ﻿<br /><br />
+<img src="https://image.redbull.com/rbcom/010/2016-07-26/1331808548315_1/0010/1/1600/1067/1/the-next-corner-the-next-lap-f1-never-stops.jpg"
+     style='position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;' />
 
-<h5>Enter a year between 1950 and 2017</h5>
+<h2 style="color: white; font-weight: bold;">The Archives</h2>
+<div style="display: inline-block; background-color: grey; border: 2px solid black;">
+    <h5>Enter a year between 1950 and 2017</h5>
 
-<form action="/Home/ShowInfoForRace" method="get">
-    @*maybe change to int year if doesnt work with text year*@
-    <input type="number" name="season" required pattern="^(19|20)\d{2}$"/><br />
-    <input type="submit" action="/Home/ShowInfoForRace?season=1" value="Search" />
-</form><br /><br /><br />
 
+    <form action="/Home/ShowInfoForRace" method="get">
+        <input type="number" name="season" required pattern="^(19|20)\d{2}$" /><br /><br />
+        <input type="submit" action="/Home/ShowInfoForRace?season=1" value="Search" />
+    </form>
+</div>
+
+
+<br /><br /><br />
+
+<h2 style="color: white; font-weight: bold;">2018 Circuits</h2>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Google Maps Multiple Markers</title>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIlnLgGmjjuZgJOac7DRstvO94hN7vAJc&callback=initMap"
             type="text/javascript"></script>
 </head>
 
+
 <body>
-    <div id="map" style="width: 1000px; height: 400px;"></div>
+    <div id="map" style="width: 99%; height: 400px;"></div>
 
     <script type="text/javascript">
+
         var locations = [
-            ['Albert Park Grand Prix Circuit', -37.850039, 144.969011, 4],
-            ['Shanghai International Circuit', 26.031600, 121.221638, 5],
-            ['Bahrain International Circuit', -34.028249, 50.512900, 3],
-            ['Sochi Autodrom', 43.409985, 39.969026, 2],
-            ['Circuit de Barcelona-Catalunya', 41.568229, 2.257133, 1],
-            ['Circuit de Monaco', 43.7355227, 7.4199952, 1],
-            ['Circuit Gilles Villeneuve', 45.503219, -73.526688, 1],
-            ['Baku City Circuit', 40.370837, 49.843497, 1],
-            ['Red Bull Ring', 47.220244, 14.764848, 1],
-            ['Silverstone Circuit', 52.073301, -1.014663, 1],
-            ['Hungaroring', 47.581711, 19.250611, 1],
-            ['Circuit de Spa-Francorchamps', 50.436912, 5.972050, 1],
-            ['Autodromo Nazionale di Monza', 45.621799, 9.284800, 1],
-            ['Marina Bay Street Circuit', 1.291432, 103.863910, 1],
-            ['Sepang International Circuit', 2.759414, 101.731778, 1],
-            ['Suzuka Circuit', 34.845593, 136.538952, 1],
-            ['Circuit of the Americas', 30.134581, -97.635851, 1],
-            ['Autódromo Hermanos Rodríguez', 19.403937, -99.089529, 1],
-            ['Autódromo José Carlos Pace', -23.701185, -46.697954, 1],
-            ['Yas Marina Circuit', 24.469941, 54.605507, 1]
+            ['Albert Park Grand Prix Circuit', -37.850039, 144.969011],
+            ['Shanghai International Circuit', 26.031600, 121.221638],
+            ['Bahrain International Circuit', -34.028249, 50.512900],
+            ['Sochi Autodrom', 43.409985, 39.969026],
+            ['Circuit de Barcelona-Catalunya', 41.568229, 2.257133],
+            ['Circuit de Monaco', 43.7355227, 7.4199952],
+            ['Circuit Gilles Villeneuve', 45.503219, -73.526688],
+            ['Baku City Circuit', 40.370837, 49.843497],
+            ['Red Bull Ring', 47.220244, 14.764848],
+            ['Silverstone Circuit', 52.073301, -1.014663],
+            ['Hungaroring', 47.581711, 19.250611],
+            ['Circuit de Spa-Francorchamps', 50.436912, 5.972050],
+            ['Autodromo Nazionale di Monza', 45.621799, 9.284800],
+            ['Marina Bay Street Circuit', 1.291432, 103.863910],
+            ['Sepang International Circuit', 2.759414, 101.731778],
+            ['Suzuka Circuit', 34.845593, 136.538952],
+            ['Circuit of the Americas', 30.134581, -97.635851],
+            ['Autódromo Hermanos Rodríguez', 19.403937, -99.089529],
+            ['Autódromo José Carlos Pace', -23.701185, -46.697954],
+            ['Yas Marina Circuit', 24.469941, 54.605507]
         ];
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: new google.maps.LatLng(-33.92, 151.25),
+            zoom: 2,
+            center: new google.maps.LatLng(23.92, 151.25),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
@@ -65,5 +75,60 @@
                 }
             })(marker, i));
         }
+
+        //var bounds = new google.maps.LatLngBounds();
+
+        //for (var i = 0; i < locations.length; i++) {
+        //    bounds.extend(locations[i].getPosition());
+        //}
+
+        //map.fitBounds(bounds);
+
     </script>
 </body>
+
+<br /><br /><br />
+<h2 style="color: white; font-weight: bold;">2018 Schedule</h2>
+<table class="table" style="background-color: white;">
+    <tr style="font-weight:bold">
+        <td>Race Name</td>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Circuit</td>
+        <td>Book Ticket/find hotels</td>
+    </tr>
+    <tr>
+        <td>
+            @foreach (var S in ViewBag.Schedule)
+            {
+                <p>@S["raceName"]</p>
+            }
+        </td>
+
+        <td>
+            @foreach (var S in ViewBag.Schedule)
+            {
+                <p>@S["date"]</p>
+            }
+        </td>
+
+        <td>
+            @foreach (var S in ViewBag.Schedule)
+            {
+                <p>@S["time"]</p>
+            }
+        </td>
+
+        <td>
+            @foreach (var S in ViewBag.Schedule)
+            {
+                <p>@S["Circuit"]["circuitName"]</p>
+            }
+        </td>
+
+        <td>
+            <p><a href="https://www.airbnb.com/s/Melbourne--Victoria--Australia/homes?query=Melbourne%2C%20Victoria%2C%20Australia&refinement_paths%5B%5D=%2Fhomes&allow_override%5B%5D=&ne_lat=-37.78935875281522&ne_lng=145.04452397411274&sw_lat=-37.89275891399366&sw_lng=144.90719487255024&search_by_map=true&zoom=12&s_tag=Z6N5ZNvu">Find a place</a></p>
+            <p><a href="https://www.airbnb.com/s/Melbourne--Victoria--Australia/homes?query=Melbourne%2C%20Victoria%2C%20Australia&refinement_paths%5B%5D=%2Fhomes&allow_override%5B%5D=&ne_lat=-37.78935875281522&ne_lng=145.04452397411274&sw_lat=-37.89275891399366&sw_lng=144.90719487255024&search_by_map=true&zoom=12&s_tag=Z6N5ZNvu">Find a place</a></p>
+        </td>
+    </tr>
+</table>

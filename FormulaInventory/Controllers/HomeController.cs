@@ -280,11 +280,6 @@ namespace FormulaInventory.Controllers
 
         #region F1 API
 
-        public ActionResult ShowConstructors()
-        {
-            return View("CarConstructors");
-        }
-
         public ActionResult ShowInfoForRace(string season)
         {
             try
@@ -325,6 +320,41 @@ namespace FormulaInventory.Controllers
                 return View("../Shared/Error");
             }
         }
+
+        public ActionResult ShowConstructors()
+        {
+            try
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://ergast.com/api/f1/2018.json");
+
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader rd = new StreamReader(response.GetResponseStream());
+
+                    string output = rd.ReadToEnd();
+
+                    JObject JParser = JObject.Parse(output);
+
+                    ViewBag.Schedule = JParser["MRData"]["RaceTable"]["Races"];
+
+                    return View("CarConstructors");
+                }
+                else
+                {
+                    return View("../Shared/Error");
+                }
+            }
+            catch (Exception)
+            {
+
+                return View("../Shared/Error");
+            }
+        }
+
         #endregion
 
     }
